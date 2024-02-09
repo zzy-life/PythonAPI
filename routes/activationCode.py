@@ -29,12 +29,8 @@ class param(BaseModel):
 async def get_evals(item: param):
     query = "SELECT * FROM activation_code"
     strData = await database.fetch_all(query=query)
-    eval: list[Body] = []
-    for record in strData:
-        # 使用 parse_obj 方法将数据库记录转换为 Body 实例
-        # 确保 record 是一个字典，且键名与数据库列名一致
-        body_instance = Body.parse_obj(record)
-        eval.append(body_instance)
+     # 使用列表推导式简化数据转换，也可以直接返回 strData
+    eval = [Body.parse_obj(record) for record in strData]
 
     evals = UserResponseBody(
         code=200,
