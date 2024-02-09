@@ -10,6 +10,7 @@ python = "^3.10"
 fastapi = "^0.95.0"
 uvicorn = "^0.25.0"
 python-dotenv = "^1.0.0"
+databases = {extras = ["aiomysql"], version = "^0.8.0"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
